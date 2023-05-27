@@ -22,7 +22,6 @@ public class SceneLoader
         Debug.Log($"Preparing scene with a key {key}");
         var operation = Addressables.LoadSceneAsync(key,LoadSceneMode.Single,false);
         LoadingScreen.AnimateLoading(operation, () => StartScene(operation));
-        // operation.Completed += StartScene;
     }
     private void StartScene(AsyncOperationHandle<SceneInstance> operation)
     {

@@ -14,7 +14,6 @@ public class Home
     }
     private void OnHomeClick()
     {
-        Debug.Log("Home part");
         SceneLoader.PrepareScene("MainMenuScene");
     }
 }

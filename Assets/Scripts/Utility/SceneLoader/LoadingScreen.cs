@@ -9,7 +9,7 @@ using System;
 
 public class LoadingScreen : MonoBehaviour
 {
-    private const float minimumLoadingTime = 2f;
+    private const float minimumLoadingTime = 1f;
     private const float seqenceFps = 24f;
     [SerializeField] private TextMeshProUGUI Percent;
     [SerializeField] private Camera Camera;
@@ -32,7 +32,6 @@ public class LoadingScreen : MonoBehaviour
     }
     private void UpdatePercentile(AsyncOperationHandle<SceneInstance> operation)
     {
-        Debug.Log("UpdatePercentile");
         if (operation.PercentComplete > CurrentPercentile) 
         {
             CurrentPercentile += 1/seqenceFps * (1f/minimumLoadingTime);

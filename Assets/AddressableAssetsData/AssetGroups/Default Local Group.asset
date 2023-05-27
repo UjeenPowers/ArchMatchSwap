@@ -16,7 +16,31 @@ MonoBehaviour:
   m_Data:
     m_SerializedData: []
   m_GUID: d950403a4b7e5474e9a19a588834a733
-  m_SerializeEntries: []
+  m_SerializeEntries:
+  - m_GUID: d0e8ae4c784b5024d9a81b2cffb948cd
+    m_Address: Match3BaseStats
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 25c55abe3fff32248bf6e46553677bb5
+    m_Address: CellPrefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: a489333a993e98f41871ac5edd17542d
+    m_Address: ChipPrefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 35b4acdd8b8146840b45749141d27187
+    m_Address: ToothSprite
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 17e7358c90b0e864e84689b0ef7efcf6
+    m_Address: BoneSprite
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 4e8bceeb7f066fe41b5216ce7df1669b
+    m_Address: ShellSprite
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 82d7d6fdd84f89c449c61d8c9185c8eb, type: 2}
   m_SchemaSet:
