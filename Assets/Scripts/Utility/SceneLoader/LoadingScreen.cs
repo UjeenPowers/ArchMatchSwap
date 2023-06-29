@@ -39,9 +39,12 @@ public class LoadingScreen : MonoBehaviour
             {
                 Sequence.Kill();
                 CurrentPercentile = 1f;
-                Camera.depth = -2;
             }
             Percent.text = ((int)(CurrentPercentile*100f)).ToString();
         }
+    }
+    public void HideLoadingScreen()
+    {
+        Camera.depth = -2;
     }
 }

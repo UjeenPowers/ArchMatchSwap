@@ -7,6 +7,7 @@ using Zenject;
 public class Board
 {
     [Inject] private Match3Stats Match3Stats;
+    [Inject] private Match3Model Match3Model;
     private Transform BoardAnchor;
     public Cell[,] Cells {get; private set;} = new Cell[0,0];
     public Action OnBoardUpdated;
@@ -43,7 +44,7 @@ public class Board
                 }
                 else
                 {
-                    newArray[i, j] = new Cell();
+                    newArray[i, j] = new Cell(Match3Model);
                     newArray[i, j].Initialize(BoardAnchor);
                     newArray[i, j].Appear(new Vector2Int(i,j),newArray.GetLength(0),newArray.GetLength(1));
                 }

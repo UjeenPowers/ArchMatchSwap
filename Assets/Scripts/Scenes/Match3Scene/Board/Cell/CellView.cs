@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using System.Threading.Tasks;
+using System;
+using UnityEngine.EventSystems;
 
 public class CellView : MonoBehaviour
 {
@@ -10,10 +13,35 @@ public class CellView : MonoBehaviour
     private const float deltaAppear = 600;
     private const float appearDuration = 0.5f;
     private const float refScale = 100;
+    private Vector2 PointerDownPos;
     private Tween Tween;
+    public Action<Vector2Int> OnSwipe;
     void Awake()
     {
         gameObject.SetActive(false);
+    }
+    public void OnPointerDown(BaseEventData data)
+    {
+        PointerEventData pointerData = data as PointerEventData;
+        PointerDownPos = pointerData.position;
+    }
+    public void OnPointerUp(BaseEventData data)
+    {
+        PointerEventData pointerData = data as PointerEventData;
+        Vector2 swipe = pointerData.position - PointerDownPos;
+        Vector2Int move = new Vector2Int(0,0);
+        if (swipe.magnitude > 30f)
+        {
+            if (Mathf.Abs(swipe.x) > Mathf.Abs(swipe.y))
+            {
+                move.x = (int)Mathf.Sign(swipe.x);
+            }
+            else
+            {
+                move.y = (int)Mathf.Sign(swipe.y);
+            }
+            OnSwipe?.Invoke(move);
+        }
     }
     public void AnimateAppear(Vector2Int position, int width, int hight)
     {
@@ -37,6 +65,8 @@ public class CellView : MonoBehaviour
         Tween = transform.DOLocalMove(transform.localPosition + new Vector3(deltaAppear,0,0),appearDuration);
         await Tween.AsyncWaitForCompletion();
         gameObject.SetActive(false);
+        GameObject.Destroy(gameObject);
+        return;
     }
     private float CalculateCellWidth(int width, int height)
     {

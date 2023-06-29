@@ -272,6 +272,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BoardAnchor: {fileID: 115077489}
+  EventSystem: {fileID: 1585817861}
 --- !u!114 &373433047
 MonoBehaviour:
   m_ObjectHideFlags: 0

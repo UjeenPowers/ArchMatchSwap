@@ -15,7 +15,7 @@ public class SceneLoader
     public void Initialize(LoadingScreen loadingScreen)
     {
         LoadingScreen = loadingScreen;
-        PrepareScene("LoginScene");
+        PrepareScene("MainMenuScene");
     }
     public void PrepareScene(string key)
     {
@@ -24,9 +24,7 @@ public class SceneLoader
         LoadingScreen.AnimateLoading(operation, () => StartScene(operation));
     }
     private void StartScene(AsyncOperationHandle<SceneInstance> operation)
-    {
-        operation.Result.ActivateAsync();
-        CurrentScene = operation.Result.Scene;
-        Debug.Log($"Scene displayed");
+    {  
+        operation.Result.ActivateAsync().completed += ((op) => {CurrentScene = operation.Result.Scene; LoadingScreen.HideLoadingScreen();});
     }
 }

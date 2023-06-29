@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
 using UnityEngine.UI;
+using DG.Tweening;
+using System;
 
 public class ChipView : MonoBehaviour
 {
@@ -28,5 +30,11 @@ public class ChipView : MonoBehaviour
         transform.SetParent(parent);
         transform.localPosition = Vector3.zero;
         transform.localScale = Vector3.one;
+    }
+    public async void MoveToCell(Transform cell, Action callback = null)
+    {
+        transform.SetParent(cell);
+        await transform.DOLocalMove(Vector3.zero,0.5f).AsyncWaitForCompletion();
+        callback?.Invoke();
     }
 }
